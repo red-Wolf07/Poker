@@ -1,7 +1,8 @@
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Color;
 
 /**
- * Rectangle class
+ * Rectangle2D class
  *
  * @author (Jason Hicks)
  * @version (v1.0 - 04/16/2026)
@@ -99,12 +100,12 @@ public class Rectangle2D extends Shape2D{
     {
         if(isOutlined()) {
             canvas.setColor(getOutlineColor());
-            canvas.drawRect(getXPosition(), getYPosition(),
+            canvas.drawRect(0, 0,
                     width + OUTLINE_WIDTH, height + OUTLINE_WIDTH);
         }
         else if(!isFilled()){
             canvas.setColor(Color.BLACK);
-            canvas.drawRect(getXPosition(), getYPosition(),
+            canvas.drawRect(0, 0,
                     width + OUTLINE_WIDTH, height + OUTLINE_WIDTH);
         }
 
@@ -114,7 +115,7 @@ public class Rectangle2D extends Shape2D{
         else{
             canvas.setColor(canvas.getColor());
         }
-        canvas.fillRect(getXPosition(), getYPosition(),
+        canvas.fillRect(0, 0,
                         width, height);
     }
 }

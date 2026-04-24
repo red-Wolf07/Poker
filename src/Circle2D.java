@@ -76,12 +76,12 @@ public class Circle2D extends Shape2D {
     {
         if(isOutlined()) {
             canvas.setColor(getOutlineColor());
-            canvas.drawOval(getXPosition(), getYPosition(),
+            canvas.drawOval(0, 0,
                     diameter + OUTLINE_WIDTH, diameter + OUTLINE_WIDTH);
         }
         else if(!isFilled()){
             canvas.setColor(Color.BLACK);
-            canvas.drawOval(getXPosition(), getYPosition(),
+            canvas.drawOval(0, 0,
                     diameter + OUTLINE_WIDTH, diameter + OUTLINE_WIDTH);
         }
 
@@ -91,7 +91,7 @@ public class Circle2D extends Shape2D {
         else{
             canvas.setColor(canvas.getColor());
         }
-        canvas.fillOval(getXPosition(), getYPosition(),
+        canvas.fillOval(0, 0,
                 diameter, diameter);
     }
 }

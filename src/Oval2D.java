@@ -1,12 +1,13 @@
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Color;
 
 /**
- * Oval class
+ * Oval2D class
  *
  * @author (Jason Hicks)
  * @version (v1.0 - 04/16/2026)
  */
-public class Oval2D extends Shape2D{
+public class Oval2D extends Shape2D {
 
     private static final int OUTLINE_WIDTH = 10;
     private int horizontalDiameter;
@@ -98,12 +99,12 @@ public class Oval2D extends Shape2D{
     {
         if(isOutlined()) {
             canvas.setColor(getOutlineColor());
-            canvas.drawOval(getXPosition(), getYPosition(),
+            canvas.drawOval(0, 0,
                     horizontalDiameter + OUTLINE_WIDTH, verticalDiameter + OUTLINE_WIDTH);
         }
         else if(!isFilled()){
             canvas.setColor(Color.BLACK);
-            canvas.drawOval(getXPosition(), getYPosition(),
+            canvas.drawOval(0, 0,
                     horizontalDiameter + OUTLINE_WIDTH, verticalDiameter + OUTLINE_WIDTH);
         }
 
@@ -113,7 +114,7 @@ public class Oval2D extends Shape2D{
         else{
             canvas.setColor(canvas.getColor());
         }
-        canvas.fillOval(getXPosition(), getYPosition(),
+        canvas.fillOval(0, 0,
                 horizontalDiameter, verticalDiameter);
     }
 
