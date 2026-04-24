@@ -17,7 +17,7 @@ public class CanvasFrame extends JFrame{
      */
     public CanvasFrame()
     {
-        frame = new JFrame("Jason Hicks - OOPDA 2026 Project6");
+        frame = new JFrame("Jason Hicks - OOPDA 2026 Poker Final Project");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         canvas = new CanvasPanel();

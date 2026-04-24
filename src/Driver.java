@@ -1,10 +1,10 @@
 /**
- * Project6 driver
+ * Driver
  *
  * @author (Jason Hicks)
  * @version (v1.0 - 04/10/26)
  */
-public class Project6_driver {
+public class Driver {
 
     public static void main(String[] args)
     {
