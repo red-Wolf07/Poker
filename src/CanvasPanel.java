@@ -28,7 +28,7 @@ public class CanvasPanel extends JPanel{
     private static final int X_CORNER = 10;
     private static final int Y_CORNER = 10;
     private static final int CANVAS_HEIGHT = 600;
-    private static final int CANVAS_WIDTH = 600;
+    private static final int CANVAS_WIDTH = 1000;
     private final Controls controls = new Controls();
 
     private List<Shape2D> shapes;
@@ -53,62 +53,7 @@ public class CanvasPanel extends JPanel{
         shapes = new ArrayList<Shape2D>();
         selectedShape = null;
 
-        int [] xCoords = {0, 150, 200, 300, 400, 500, 600};
-        int [] yCoords = {165, 265, 235, 305, 225, 355, 165};
-        shapes.add(new Polygon2D(Shape2D.BROWN, 0, 0, xCoords ,yCoords));
 
-// Grass and road
-        shapes.add(new Rectangle2D(Shape2D.GREEN, 0, 0, 600, 75));
-        shapes.add(new Rectangle2D(Shape2D.BLACK, 0, 75, 600, 50));
-        shapes.add(new Rectangle2D(Shape2D.WHITE, 0, 125, 600, 10));
-        shapes.add(new Rectangle2D(Shape2D.BLACK, 0, 135, 600, 30));
-
-// Stars
-        shapes.add(new StarPolygon2D(6, 200, 500));
-
-        selectedShape = new StarPolygon2D(6, 100, 300);
-        selectedShape.setScale(1.2, 1.2);
-        shapes.add(selectedShape);
-
-        selectedShape = new StarPolygon2D(6, 500, 400);
-        selectedShape.setScale(.8, .8);
-        shapes.add(selectedShape);
-
-        selectedShape = new Oval2D(Shape2D.YELLOW, 100, 400, 40, 30);
-        selectedShape.setPivot(-50.0, -700.0);
-        shapes.add(selectedShape);
-
-// Create a blockhead from rectangles, circles and ovals
-        shapes.add(new Rectangle2D(Shape2D.BLUE, 445, 420, 100,
-                140)); // head, shape 9
-        shapes.add(new Rectangle2D(Shape2D.CYAN, 485, 480, 20,
-                20)); // nose, shape 10
-        shapes.add(new Oval2D(Shape2D.YELLOW, 500, 510, 40,
-                20)); // eye, shape 11
-        shapes.add(new Oval2D(Shape2D.YELLOW, 450, 510, 40,
-                20)); // eye, shape 12
-        shapes.add(new Rectangle2D(Shape2D.RED, 465, 450, 60,
-                20)); // mouth, shape 13
-        shapes.add(new Circle2D(Shape2D.BLACK,460, 513,
-                15)); // eye, shape 14
-        shapes.add(new Circle2D(Shape2D.BLACK,515, 513,
-                15)); // eye, shape 15
-        shapes.add(new Circle2D());
-        shapes.add(new Circle2D(Shape2D.CYAN, 20, 20, 40));
-        shapes.add(new Rectangle2D(Shape2D.BLUE, 200, 135, 100, 50));
-
-// Sonic Sprite
-        BufferedImage[] Sonic_Sprites = new BufferedImage[4];
-        try {
-            Sonic_Sprites[0] = ImageIO.read(new File("H:\\OOPDA\\Projects\\Project7\\src\\Sonic1.png"));
-            Sonic_Sprites[1] = ImageIO.read(new File("H:\\OOPDA\\Projects\\Project7\\src\\Sonic2.png"));
-            Sonic_Sprites[2] = ImageIO.read(new File("H:\\OOPDA\\Projects\\Project7\\src\\Sonic3.png"));
-            Sonic_Sprites[3] = ImageIO.read(new File("H:\\OOPDA\\Projects\\Project7\\src\\Sonic4.png"));
-        } catch (IOException ie) {
-            ie.printStackTrace();
-        }
-        Sprite2D sonic = new Sprite2D(100, 125, Sonic_Sprites);
-        shapes.add(sonic); // shape 19
 
         this.setFocusable(true);
         this.addKeyListener(controls);
@@ -123,27 +68,6 @@ public class CanvasPanel extends JPanel{
         if(action){
             Shape2D shape = null;
 
-            shape = shapes.get(STAR_2);
-            double angle = shape.getRotationAngleZ();
-            angle += 1.0;
-            shape.setRotationAngleZ(angle);
-
-            shape = shapes.get(SUN);
-            angle = shape.getRotationAngleZ();
-            angle += 1.0;
-            shape.setRotationAngleZ(angle);
-
-            shape = shapes.get(CYAN_CIRCLE);
-            shape.move(1, 2); // move the shape along via a delta in x and y
-
-            shape = shapes.get(BLUE_CIRCLE);
-            shape.move(2, 1); // move the shape along via a delta in x and y
-
-            shape = shapes.get(BLUE_RECT);
-            shape.move(2, 0); // move the shape along via a delta in x and y
-
-            shape = shapes.get(SONIC_SPRITE_1);
-            shape.move(3, 0); // move the shape along via a delta in x and y
         }
     }
 
@@ -180,11 +104,11 @@ public class CanvasPanel extends JPanel{
         Graphics2D backgroundGraphics = (Graphics2D) frame.create();
         backgroundGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        backgroundGraphics.setColor(Color.BLACK);
+        backgroundGraphics.setColor(new Color(125, 60,10));
         backgroundGraphics.fillRect(0, 0, CANVAS_WIDTH + (2 * X_CORNER),
                                                 CANVAS_HEIGHT + (2 * Y_CORNER));
 
-        backgroundGraphics.setColor(Color.LIGHT_GRAY);
+        backgroundGraphics.setColor(new Color(92, 196, 68));
         backgroundGraphics.fillRect(X_CORNER, Y_CORNER, CANVAS_WIDTH, CANVAS_HEIGHT);
 
        return backgroundGraphics;
