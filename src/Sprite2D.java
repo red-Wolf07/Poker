@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
  * @author (Jason Hicks)
  * @version (v1.0 - 04/23/26)
  */
-public class Sprite2D extends Shape2D_P7{
+public class Sprite2D extends Shape2D{
 
     private BufferedImage[] imageFrames;
     private int frame;

@@ -7,7 +7,7 @@ import java.awt.Color;
  * @author (Jason Hicks)
  * @version (v1.0 - 04/23/26)
  */
-public class Polygon2D extends Shape2D_P7{
+public class Polygon2D extends Shape2D{
 
     private int[] xCoordinates;
     private int[] yCoordinates;

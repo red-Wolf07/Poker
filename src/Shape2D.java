@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  * Shape2D class
@@ -47,6 +48,9 @@ public abstract class Shape2D {
     private int yPosition;
     private int xVelocity;
     private int yVelocity;
+    private double xScale, yScale;
+    private double rotationAngleZ;
+    private double xPivot, yPivot;
     private Color fillColor;
     private int fillColorIndex;
     private Color outlineColor;
@@ -64,6 +68,12 @@ public abstract class Shape2D {
         yPosition = 0;
         xVelocity = 0;
         yVelocity = 0;
+
+        xScale = 1;
+        yScale = 1;
+        xPivot = 0;
+        yPivot = 0;
+        rotationAngleZ = 0;
 
         fill = true;
         outline = false;
@@ -89,6 +99,12 @@ public abstract class Shape2D {
         xVelocity = 0;
         yVelocity = 0;
 
+        xScale = 1;
+        yScale = 1;
+        xPivot = 0;
+        yPivot = 0;
+        rotationAngleZ = 0;
+
         fillColorIndex = colorIndex;
         fillColor = COLORS[colorIndex];
 
@@ -112,6 +128,12 @@ public abstract class Shape2D {
         xVelocity = 0;
         yVelocity = 0;
 
+        xScale = 1;
+        yScale = 1;
+        xPivot = 0;
+        yPivot = 0;
+        rotationAngleZ = 0;
+
         setFillColor(color);
         setOutlineColor(color);
 
@@ -132,6 +154,12 @@ public abstract class Shape2D {
         this.yPosition = yPosition;
         xVelocity = 0;
         yVelocity = 0;
+
+        xScale = 1;
+        yScale = 1;
+        xPivot = 0;
+        yPivot = 0;
+        rotationAngleZ = 0;
 
         fill = true;
         outline = false;
@@ -159,6 +187,12 @@ public abstract class Shape2D {
         this.yPosition = yPosition;
         xVelocity = 0;
         yVelocity = 0;
+
+        xScale = 1;
+        yScale = 1;
+        xPivot = 0;
+        yPivot = 0;
+        rotationAngleZ = 0;
 
         fillColorIndex = colorIndex;
         fillColor = COLORS[colorIndex];
@@ -209,6 +243,57 @@ public abstract class Shape2D {
     {
         return yVelocity;
     }
+
+    /**
+     * Gets the factor by which the shape is scaled on the x-axis
+     *
+     * @return    The double value of xScale
+     */
+    public double getXScale()
+    {
+        return xScale;
+    }
+
+    /**
+     * Gets the factor by which the shape is scaled on the y-axis
+     *
+     * @return    The double value of yScale
+     */
+    public double getYScale()
+    {
+        return yScale;
+    }
+
+    /**
+     *
+     *
+     * @return    The double value of xPivot
+     */
+    public double getXPivot()
+    {
+        return xPivot;
+    }
+
+    /**
+     *
+     *
+     * @return    The double value of yPivot
+     */
+    public double getYPivot()
+    {
+        return yPivot;
+    }
+
+    /**
+     * Gets the Shape's rotation angle
+     *
+     * @return    The double value of rotationAngleZ
+     */
+    public double getRotationAngleZ()
+    {
+        return rotationAngleZ;
+    }
+
 
     /**
      * Gets the index of the Shape's outline color
@@ -311,6 +396,82 @@ public abstract class Shape2D {
     {
         yVelocity = yVel;
     }
+
+    /**
+     * Sets the factor by which the shape is scaled on the x-axis
+     *
+     * @param  xScale  A double value
+     */
+    public void setXScale(double xScale)
+    {
+        this.xScale = xScale;
+    }
+
+    /**
+     * Sets the factor by which the shape is scaled on the y-axis
+     *
+     * @param  yScale  A double value
+     */
+    public void setYScale(double yScale)
+    {
+        this.yScale = yScale;
+    }
+
+    /**
+     * Sets the factor by which the shape is scaled on the x-axis
+     * and on the y-axis
+     *
+     * @param  xScale  A double value
+     * @param  yScale  A double value
+     */
+    public void setScale(double xScale, double yScale)
+    {
+        setXScale(xScale);
+        setYScale(yScale);
+    }
+
+    /**
+     *
+     *
+     * @param  xPivot  A double value
+     */
+    public void setXPivot(double xPivot)
+    {
+        this.xPivot = xPivot;
+    }
+
+    /**
+     *
+     *
+     * @param  yPivot  A double value
+     */
+    public void setYPivot(double yPivot)
+    {
+        this.yPivot = yPivot;
+    }
+
+    /**
+     *
+     * @param  xPivot  A double value
+     * @param  yPivot  A double value
+     */
+    public void setPivot(double xPivot, double yPivot)
+    {
+        setXPivot(xPivot);
+        setYPivot(yPivot);
+    }
+
+    /**
+     * Sets the Shape's rotation angle
+     *
+     * @param  zRotation  A double value
+     */
+    public void setRotationAngleZ(double zRotation)
+    {
+        rotationAngleZ = zRotation;
+    }
+
+
 
     /**
      * Sets the Shape's current outline color index to a new one
@@ -429,6 +590,20 @@ public abstract class Shape2D {
     {
         xPosition += deltaX;
         yPosition += deltaY;
+    }
+
+    /**
+     * Sets the shape's position, rotation, and scale, on a
+     * specified canvas.
+     *
+     * @param  canvas  The Graphics plane which the shape
+     *                 is transformed on.
+     */
+    public void transform(Graphics2D canvas)
+    {
+        canvas.translate(xPosition, yPosition);
+        canvas.rotate(Math.toRadians(rotationAngleZ), xPivot, yPivot);
+        canvas.scale(xScale, yScale);
     }
 
     /**
